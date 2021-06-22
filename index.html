@@ -1,10 +1,10 @@
 <html>
 
 <head>
-	<title>WebGL1.0 Tutorial Lab 10 - MSAA and Blending</title>
+	<title>WebGL1.0 Tutorial</title>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 	<script type="text/javascript" src="gl-matrix.js"> </script>
-	<script type="text/javascript" src="script.js"> </script>
+	<script type="text/javascript" src="script-2.js"> </script>
 	<!-- <style>
 		html, body {
 			width: 100%;
@@ -17,8 +17,19 @@
 	</style> -->
 </head>
 
-<body style="background-color:black;color:white;" onload="main()">
-    <canvas id="helloapicanvas" style="position:absolute;" width="800" height="600"></canvas>
-
+<body onload="main()">
+    <canvas id="helloapicanvas" style="border: none;" width="800" height="600"></canvas>
+	</br></br>
+	<button onclick="toggleAnimation()">Toggle Animation</button>
+	<button onclick="speed_scale(1.1)"> + </button>
+	<button onclick="speed_scale(0.9)"> - </button>
+	<button onclick="fn_draw_mode(2)"> Lines </button>
+	<button onclick="fn_draw_mode(4)"> Triangles </button>
+	<button onclick="fn_draw_mode(0)"> Points </button>
+	<p>FOV :
+		<input style="width:500px" id="fov_range" type="range" min="10" max="170" value="90"
+			oninput="fn_update_fov(this.value);">
+		<input type="text" id="textFOV" value="90">
+	</p>
 </body>
 </html>
