@@ -1,6 +1,6 @@
 # WebGL Final Project
 
-> **본 문서는 webGL의 가장 기초적인 부분인 Transform과 View에 대한 튜토리얼입니다.**
+> **본 문서는 webGL의 가장 기초적인 부분인 Transform과 View/Projection에 대한 튜토리얼입니다.**
 
 # Cube Basic
 
@@ -104,7 +104,7 @@ mat4.lookAt(
 
 # Frustum Plane
 
-> 해당 Tab에서는 Perspective View가 만드는 Frustum에 대한 내용을 다룹니다.
+> 해당 Tab에서는 Perspective가 만드는 Frustum에 대한 내용을 다룹니다.
 
 ```javascript
 perspective(out, fovy, aspect, near, far);
@@ -149,9 +149,6 @@ mat4.perspective(
     zFar / 10.0
 );
 ```
-
--   projection에는 2가지 종류인 parallel projection과 perspective projection이 있습니다.
--   Parallel projection은 plane과 camera의 거리가 무한대라고 가정하기 때문에
 
 <hr>
 
