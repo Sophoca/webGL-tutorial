@@ -376,6 +376,7 @@ function renderScene() {
 }
 
 function main() {
+    document.getElementById("defaultTab").click();
     var canvas = document.getElementById("helloapicanvas");
     gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
     if (!gl) {
