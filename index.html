@@ -27,28 +27,49 @@
 	
 			<tr>
 				<td align=center>
-					<canvas id="helloapicanvas" style="border: none;" width="600" height="900"></canvas>
+					<canvas id="helloapicanvas" style="border: none;" width="600" height="450"></canvas>
 				</td>
 	
 				<div class="split right">
 					<div class="tab">
 						<button class="tablinks" onclick="openCity(event, 'London')">Cube Basic</button>
 						<button class="tablinks" onclick="openCity(event, 'Paris')">LookAt with Cube</button>
-						<button class="tablinks" onclick="openCity(event, 'Tokyo')">Code and Explanation</button>
+						<button class="tablinks" onclick="openCity(event, 'Tokyo')">Frustum Plane</button>
 					</div>
 	
 					<!-- Tab content -->
 					<div id="London" class="tabcontent">
 						<br>
-						<h3>CUBE DRAWMODE</h3>
+						<h3>Cube DrawMode</h3>
+						<br>
 						<div>
 							<button style="width: 100px; height: 30px" onclick="fn_draw_mode(2)"> Lines </button>
 							<button style="width: 100px; height: 30px" onclick="fn_draw_mode(4)"> Triangles </button>
 							<button style="width: 100px; height: 30px" onclick="fn_draw_mode(0)"> Points </button>
 						</div>
-						<br><br>
-
-						<h3>CUBE ROTATING</h3>
+						<br><hr><br>
+						<h3>Cube Translate</h3>
+						<br>
+						<div>
+							<p>1. translate cube - X</p>
+							<input  id="moveX" type="range" min="-5" max="5" value="0" step="0.1"
+								oninput="fn_moveX(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>2. translate cube - Y</p>
+							<input  id="moveY" type="range" min="-5" max="5" value="0" step="0.1"
+								oninput="fn_moveY(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>3. translate cube - Z</p>
+							<input  id="moveZ" type="range" min="-5" max="5" value="0" step="0.1"
+								oninput="fn_moveZ(this.value);"></input>
+						</div>
+						<br><hr><br>
+						<h3>Cube Rotate</h3>
+						<br>
 						<div>
 							<button style="width: 120px; height: 30px" onclick="toggleAnimation()">Toggle Animation</button>
 							<button style="width: 40px; height: 30px" onclick="speed_scale(1.1)"> + </button>
@@ -56,23 +77,43 @@
 						</div>
 						<br>
 						<div>
-							<p>1. rotate cube with 'X' axis</p>
+							<p>1. rotate cube - X axis</p>
 							<input id="rotateX" type="range" min="-180" max="180" value="0" step="0.1"
 								oninput="fn_rotateX(this.value);"></input>
 						</div>
 						<br>
 						<div>
-							<p>2. rotate cube with 'Y' axis.</p>
+							<p>2. rotate cube - Y axis</p>
 							<input id="rotateY" type="range" min="-180" max="180" value="0" step="0.1"
 								oninput="fn_rotateY(this.value);"></input>
 						</div>
 						<br>
 						<div>
-							<p>3. rotate cube with 'Z' axis.</p>
+							<p>3. rotate cube - Z axis</p>
 							<input id="rotateZ" type="range" min="-180" max="180" value="0" step="0.1"
 								oninput="fn_rotateZ(this.value);"></input>
 						</div>
+						<br><hr><br>
+						<h3>Cube Scale</h3>
 						<br>
+						<div>
+							<p>1. scale cube - X</p>
+							<input  id="scaleX" type="range" min="0.1" max="3" value="1" step="0.1"
+								oninput="fn_scaleX(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>2. scale cube - Y</p>
+							<input  id="scaleY" type="range" min="0.1" max="3" value="1" step="0.1"
+								oninput="fn_scaleY(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>3. scale cube - Z</p>
+							<input  id="scaleZ" type="range" min="0.1" max="3" value="1" step="0.1"
+								oninput="fn_scaleZ(this.value);"></input>
+						</div>
+						<br><hr><br>
 						<div>
 							<button style="width: 100px; height: 30px" onclick="resetCube()">Reset</button> If you press this button, you can get default cube.
 						</div>
@@ -81,6 +122,7 @@
 					<div id="Paris" class="tabcontent">
 						<br>
 						<h3>Postion of the viewer - eye</h3>
+						<br>
 						<div>
 							<p>1. postion of the viewer - X</p>
 							<input  id="lookAt_rangeX" type="range" min="-6" max="6" value="0" step="0.1"
@@ -98,8 +140,9 @@
 							<input  id="lookAt_rangeZ" type="range" min="2" max="6" value="2" step="0.1"
 								oninput="fn_update_lookAtZ(this.value);"></input>
 						</div>
-						<br><br>
+						<br><hr><br>
 						<h3>Point the viewer is looking at - center</h3>
+						<br>
 						<div>
             				<p>1. point the viewer is looking at - X</p>
 							<input  id="eye_rangeX" type="range" min="-2" max="2" value="0" step="0.05"
@@ -117,30 +160,51 @@
 							<input  id="eye_rangeZ" type="range" min="-1.5" max="1.5" value="0" step="0.05"
 								oninput="fn_update_eyeAtZ(this.value);"></input>
 						</div>
-						<br>
+						<br><hr><br>
 						<div>
 							<button style="width: 100px; height: 30px" onclick="resetCamera()">Reset</button> If you press this button, you can get default
 							cube.
 						</div>
-	
-	
 					</div>
 	
 					<div id="Tokyo" class="tabcontent">
-						<h3>What is Lookat?</h3>
-						<br></br>
-						<p>- Set the condition of the camera looking at the object. Specifies the position of the camera,
-							the position of what the camera looks at, and the line vector of the camera.</p>
-						<br></br>
-						<h3>Position of the viewer</p>
-							<p>- Setting the postion of the camera</p>
-							<br></br>
-							<p>Point the viewer is looking at</p>
-							<p>- Setting the postion of the camera looking at</p>
-							<br></br>
-							<p>vec3 pointing up</p>
-							<p>- Setting the normal vector of the camera</p>
-							<br></br>
+						<br>
+						<h3>Perspective View - Frustum</h3>
+						<br>
+						<div>
+							<p>1. Field of View</p>
+							<input  id="fov" type="range" min="10" max="180" value="90" step="0.1"
+								oninput="fn_update_fov(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>2. Viewport X</p>
+							<input  id="aspectX" type="range" min="0.8" max="16" value="8" step="0.1"
+								oninput="fn_update_aspectX(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>3. Viewport Y</p>
+							<input  id="aspectY" type="range" min="0.6" max="12" value="6" step="0.1"
+								oninput="fn_update_aspectY(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>4. z-near</p>
+							<input  id="zNear" type="range" min="0.01" max="50" value="1" step="0.1"
+								oninput="fn_update_zNear(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>5. z-far</p>
+							<input  id="zFar" type="range" min="0.01" max="50" value="100" step="0.1"
+								oninput="fn_update_zFar(this.value);"></input>
+						</div>
+						<br><hr><br>
+						<div>
+							<button style="width: 100px; height: 30px" onclick="resetPerspective()">Reset</button> If you press this button, you can get default
+							cube.
+						</div>
 					</div>
 				</div>
 			</tr>
