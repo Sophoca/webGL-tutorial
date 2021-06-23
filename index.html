@@ -4,7 +4,8 @@
 	<title>WebGL1.0 Tutorial</title>
 	<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
 	<script type="text/javascript" src="gl-matrix.js"> </script>
-	<script type="text/javascript" src="script-2.js"> </script>
+	<script type="text/javascript" src="script.js"> </script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<!-- <style>
 		html, body {
 			width: 100%;
@@ -18,18 +19,131 @@
 </head>
 
 <body onload="main()">
-    <canvas id="helloapicanvas" style="border: none;" width="800" height="600"></canvas>
-	</br></br>
-	<button onclick="toggleAnimation()">Toggle Animation</button>
-	<button onclick="speed_scale(1.1)"> + </button>
-	<button onclick="speed_scale(0.9)"> - </button>
-	<button onclick="fn_draw_mode(2)"> Lines </button>
-	<button onclick="fn_draw_mode(4)"> Triangles </button>
-	<button onclick="fn_draw_mode(0)"> Points </button>
-	<p>FOV :
-		<input style="width:500px" id="fov_range" type="range" min="10" max="170" value="90"
-			oninput="fn_update_fov(this.value);">
-		<input type="text" id="textFOV" value="90">
-	</p>
+	<table>
+		<div class="container">
+			<header>
+				<h1>WebGL - Fianl Project</h1>
+			</header>
+	
+			<tr>
+				<td align=center>
+					<canvas id="helloapicanvas" style="border: none;" width="600" height="900"></canvas>
+				</td>
+	
+				<div class="split right">
+					<div class="tab">
+						<button class="tablinks" onclick="openCity(event, 'London')">Cube Basic</button>
+						<button class="tablinks" onclick="openCity(event, 'Paris')">LookAt with Cube</button>
+						<button class="tablinks" onclick="openCity(event, 'Tokyo')">Code and Explanation</button>
+					</div>
+	
+					<!-- Tab content -->
+					<div id="London" class="tabcontent">
+						<br>
+						<h3>CUBE DRAWMODE</h3>
+						<div>
+							<button style="width: 100px; height: 30px" onclick="fn_draw_mode(2)"> Lines </button>
+							<button style="width: 100px; height: 30px" onclick="fn_draw_mode(4)"> Triangles </button>
+							<button style="width: 100px; height: 30px" onclick="fn_draw_mode(0)"> Points </button>
+						</div>
+						<br><br>
+
+						<h3>CUBE ROTATING</h3>
+						<div>
+							<button style="width: 120px; height: 30px" onclick="toggleAnimation()">Toggle Animation</button>
+							<button style="width: 40px; height: 30px" onclick="speed_scale(1.1)"> + </button>
+							<button style="width: 40px; height: 30px" onclick="speed_scale(0.9)"> - </button>
+						</div>
+						<br>
+						<div>
+							<p>1. rotate cube with 'X' axis</p>
+							<input id="rotateX" type="range" min="-180" max="180" value="0" step="0.1"
+								oninput="fn_rotateX(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>2. rotate cube with 'Y' axis.</p>
+							<input id="rotateY" type="range" min="-180" max="180" value="0" step="0.1"
+								oninput="fn_rotateY(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>3. rotate cube with 'Z' axis.</p>
+							<input id="rotateZ" type="range" min="-180" max="180" value="0" step="0.1"
+								oninput="fn_rotateZ(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<button style="width: 100px; height: 30px" onclick="resetCube()">Reset</button> If you press this button, you can get default cube.
+						</div>
+					</div>
+	
+					<div id="Paris" class="tabcontent">
+						<br>
+						<h3>Postion of the viewer - eye</h3>
+						<div>
+							<p>1. postion of the viewer - X</p>
+							<input  id="lookAt_rangeX" type="range" min="-6" max="6" value="0" step="0.1"
+								oninput="fn_update_lookAtX(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>2. postion of the viewer - Y</p>
+							<input  id="lookAt_rangeY" type="range" min="-6" max="6" value="0" step="0.1"
+								oninput="fn_update_lookAtY(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>3. postion of the viewer - Z</p>
+							<input  id="lookAt_rangeZ" type="range" min="2" max="6" value="2" step="0.1"
+								oninput="fn_update_lookAtZ(this.value);"></input>
+						</div>
+						<br><br>
+						<h3>Point the viewer is looking at - center</h3>
+						<div>
+            				<p>1. point the viewer is looking at - X</p>
+							<input  id="eye_rangeX" type="range" min="-2" max="2" value="0" step="0.05"
+								oninput="fn_update_eyeAtX(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<p>2. point the viewer is looking at - Y</p>
+							<input  id="eye_rangeY" type="range" min="-2" max="2" value="0" step="0.05"
+								oninput="fn_update_eyeAtY(this.value);"></input>
+						</div>
+                		<br>
+						<div>
+							<p>3. point the viewer is looking at - Z</p>
+							<input  id="eye_rangeZ" type="range" min="-1.5" max="1.5" value="0" step="0.05"
+								oninput="fn_update_eyeAtZ(this.value);"></input>
+						</div>
+						<br>
+						<div>
+							<button style="width: 100px; height: 30px" onclick="resetCamera()">Reset</button> If you press this button, you can get default
+							cube.
+						</div>
+	
+	
+					</div>
+	
+					<div id="Tokyo" class="tabcontent">
+						<h3>What is Lookat?</h3>
+						<br></br>
+						<p>- Set the condition of the camera looking at the object. Specifies the position of the camera,
+							the position of what the camera looks at, and the line vector of the camera.</p>
+						<br></br>
+						<h3>Position of the viewer</p>
+							<p>- Setting the postion of the camera</p>
+							<br></br>
+							<p>Point the viewer is looking at</p>
+							<p>- Setting the postion of the camera looking at</p>
+							<br></br>
+							<p>vec3 pointing up</p>
+							<p>- Setting the normal vector of the camera</p>
+							<br></br>
+					</div>
+				</div>
+			</tr>
+	</table>
 </body>
 </html>
