@@ -64,7 +64,7 @@ mat4.scale(mMat, mMat, [xScale, yScale, zScale]);
 
 <hr>
 
-## LookAt
+# LookAt
 
 > 해당 Tab에서는 lookAt의 각 parameter에 대한 내용을 다룹니다.
 
@@ -76,20 +76,20 @@ lookAt(out, eye, center, up);
 <img width = '600' src = './ref/lookAt_eye.png'>
 </p>
 
-### Eye
+## Eye
 
 -   카메라(눈)의 위치를 정하는 부분입니다.
 
-### Center
+## Center
 
 -   카메라(눈)이 바라보는 위치를 정하는 부분입니다.
 
-### Up
+## Up
 
 -   카메라(눈)의 윗면이 바라보는 방향입니다.
 -   해당 튜토리얼에서는 [0, 1, 0]으로 고정된 값을 사용합니다.
 
-### Examples
+## Examples
 
 ```javascript
 mat4.lookAt(
@@ -102,7 +102,7 @@ mat4.lookAt(
 
 <hr>
 
-## Frustum Plane
+# Frustum Plane
 
 > 해당 Tab에서는 Perspective View가 만드는 Frustum에 대한 내용을 다룹니다.
 
@@ -114,7 +114,7 @@ perspective(out, fovy, aspect, near, far);
 <img width = '600' src = './ref/fov2.png'>
 </p>
 
-### Field of View
+## Field of View
 
 <p align = 'center'>
 <img width = '600' src = './ref/fov.gif'>
@@ -123,12 +123,12 @@ perspective(out, fovy, aspect, near, far);
 -   FoV는 시야각을 의미하며 라디안으로 단위를 변환하여 입력해야합니다.
 -   따라서 해당 튜토리얼에서는 10~170까지의 값을 사용하였으며 라디안으로 변환하여 perspective에 넣어 사용하였습니다.
 
-### Aspect
+## Aspect
 
 -   Aspect는 normalized coordinate로 변환하는 과정에서 viewport의 비율을 결정합니다.
 -   해당 튜토리얼에서는 canvas의 크기가 800\*600이기 때문에 default로 8.0/6.0을 사용합니다.
 
-### Near Plane and Far Plane
+## Near Plane and Far Plane
 
 <p align = 'center'>
 <img width = '600' src = './ref/zPlane.gif'>
@@ -138,7 +138,7 @@ perspective(out, fovy, aspect, near, far);
 -   Far plane은 어느 부분까지 normalized coordinate에 포함할지를 정하는 평면입니다.
 -   두 평면 사이의 거리가 Z를 표현하는 bit의 범위보다 커지게 되면 도형의 depth를 표현하는 부분에서 문제가 생길 수 있습니다.
 
-### Examples
+## Examples
 
 ```javascript
 mat4.perspective(
